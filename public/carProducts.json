@@ -1,0 +1,44 @@
+[
+    {
+        "_id":"001",
+        "parts_Img":"https://i.ibb.co/XjpV6GY/1.png",
+        "title":"Car Engine Plug",
+        "price":"$20.00",
+        "rating":"4.8"
+    },
+    {
+        "_id":"002",
+        "parts_Img":"https://i.ibb.co/w734VG5/2.png",
+        "title":"Car Air Filter",
+        "price":"$50.00",
+        "rating":"4.7"
+    },
+    {
+        "_id":"003",
+        "parts_Img":"https://i.ibb.co/BqM4hBD/3.png",
+        "title":"Car Shock Absorber",
+        "price":"$35.00",
+        "rating":"4.8"
+    },
+    {
+        "_id":"004",
+        "parts_Img":"https://i.ibb.co/4gKJ85J/4.png",
+        "title":"Car Brake Pads",
+        "price":"$40.00",
+        "rating":"4.5"
+    },
+    {
+        "_id":"005",
+        "parts_Img":"https://i.ibb.co/CvzW19C/5.png",
+        "title":"Car Alternator",
+        "price":"$25.00",
+        "rating":"4.8"
+    },
+    {
+        "_id":"006",
+        "parts_Img":"https://i.ibb.co/Pwgzbjd/6.png",
+        "title":"Car Battery",
+        "price":"$75.00",
+        "rating":"5.0"
+    }
+]
