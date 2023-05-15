@@ -5,7 +5,7 @@ import { FaBusinessTime, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 const Services = () => {
   const [Services, setServices] = useState([]);
   useEffect(() => {
-    fetch(`Services.json`)
+    fetch(`http://localhost:5000/services`)
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -31,7 +31,7 @@ const Services = () => {
           More Services
         </button>
       </div>
-      <div className="lg:flex justify-around items-center rounded-xl gap-10 lg:h-[200px] bg-black text-white">
+      <div className="lg:flex justify-around items-center mx-5 lg:mx-0 rounded-xl gap-10 h-80 lg:h-[200px] bg-black text-white">
         <div className="text-center">
           <FaBusinessTime className="ml-20 text-4xl text-error"/>
           <p>We are open monday-friday</p>

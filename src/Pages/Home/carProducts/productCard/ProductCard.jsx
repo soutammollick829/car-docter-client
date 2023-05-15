@@ -6,10 +6,10 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 const ProductCard = ({ product }) => {
   const { parts_Img, price, rating, title } = product;
   return (
-    <div className="card w-72 border">
+    <div className="card lg:w-72 border mx-5 lg:mx-0">
       <figure>
         <img
-          className="h-[200px] w-full p-5 bg-slate-100"
+          className="lg:h-[200px] w-full p-5 bg-slate-100"
           src={parts_Img}
           alt="car!"
         />
