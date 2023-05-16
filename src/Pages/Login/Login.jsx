@@ -1,17 +1,29 @@
 import { FaFacebook, FaGoogle, FaInvision } from "react-icons/fa";
 import loginSvg from "../../assets/images/login/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  
 
   const handelLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+ 
+      if (password.length < 6) {
+        Swal.fire({
+          title: 'Invalid Password',
+          text: 'The password must be at least 6 characters long.',
+          icon: 'error',
+        });
+        return false; 
+      }
 
     console.log( email, password);
     signIn(email, password)
@@ -19,6 +31,21 @@ const Login = () => {
         const user = res.user;
         console.log(user);
         form.reset("");
+        if(user.email !== password){
+          Swal.fire({
+            title: 'Login Successful',
+            text: 'You have successfully logged in.',
+            icon: 'success',
+          });
+          navigate('/')
+        } else {
+          Swal.fire({
+            title: 'Login Failed',
+            text: 'Invalid username or password.',
+            icon: 'error',
+          });
+          return false; 
+        }
       })
       .then((error) => {
         console.error(error);

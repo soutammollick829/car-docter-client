@@ -2,9 +2,13 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import checkOutImg from "../../assets/images/checkout/checkout.png";
+import Swal from "sweetalert2";
+
+
 const CheckOut = () => {
   const service = useLoaderData();
-  const { _id, price } = service;
+
+  const { title, _id, price, img } = service;
   const { user } = useContext(AuthContext);
 
   const handelCheckOut = (event) => {
@@ -15,16 +19,33 @@ const CheckOut = () => {
     const date = form.date.value;
     const email = user?.email;
     const bio = form.bio.value;
-    const order = {
+    const booking = {
       customerName: name,
       date,
       email,
       bio,
-      service: _id,
+      img,
+      service: title,
+      service_id: _id,
       price: price,
     };
     form.reset("");
-    console.log(order);
+    console.log(booking);
+
+    fetch(`http://localhost:5000/bookings`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire("Good job!", "Your service booking successfully", "success");
+        }
+      });
   };
   return (
     <div>
@@ -59,6 +80,7 @@ const CheckOut = () => {
             <input
               type="date"
               name="date"
+              required
               placeholder="password"
               className="input input-bordered"
             />
