@@ -1,13 +1,16 @@
 import { FaFacebook, FaGoogle, FaInvision } from "react-icons/fa";
 import loginSvg from "../../assets/images/login/login.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn,handelSignGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
   
 
   const handelLogin = (event) => {
@@ -37,7 +40,7 @@ const Login = () => {
             text: 'You have successfully logged in.',
             icon: 'success',
           });
-          navigate('/')
+          navigate(from, { replace: true });
         } else {
           Swal.fire({
             title: 'Login Failed',
@@ -98,7 +101,7 @@ const Login = () => {
           <div className="flex mx-auto gap-5 mt-4">
             <FaFacebook className="text-4xl text-blue-500" />
             <FaInvision className="text-4xl text-blue-500 rounded-full" />
-            <FaGoogle className="text-4xl text-blue-500" />
+            <FaGoogle onClick={handelSignGoogle} className="text-4xl text-blue-500" />
           </div>
           <p className="text-center mt-3 mb-5">
             Have an account?

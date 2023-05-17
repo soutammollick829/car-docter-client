@@ -6,7 +6,7 @@ const BookingRow = ({ booking,handelDelete }) => {
   return (
     <div>
      <tr>
-        <th>
+        <th className="w-52">
           <button onClick={()=> handelDelete(_id)} className="btn btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
